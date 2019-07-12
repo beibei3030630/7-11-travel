@@ -2,8 +2,7 @@
   <div>
       List
   </div>
-</template>
-
+</template> 
 <script>
 export default {
   name:"List",
