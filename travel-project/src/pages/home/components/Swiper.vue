@@ -38,6 +38,9 @@ export default {
 };
 </script>
  <style lang="stylus" scoped>
+ .wrapper>>>.swiper-pagination
+  position relative
+  top -35px
  .wrapper>>>.swiper-pagination-bullet-active
    background #fff
  .wrapper
