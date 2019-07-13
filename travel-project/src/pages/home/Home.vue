@@ -14,6 +14,7 @@ import HomeSwiper from "./components/Swiper";
 import HomeIcons from "./components/Icons";
 import HomeRecommend from "./components/Recommend";
 import HomeWeekend from "./components/Weekend";
+import HomeScroll from "./components/Scroll";
 export default {
   name: "Home",
   components: {
@@ -21,7 +22,8 @@ export default {
     HomeSwiper,
     HomeIcons,
     HomeRecommend,
-    HomeWeekend
+    HomeWeekend,
+    HomeScroll
   },
   data() {
     return {};
@@ -30,6 +32,4 @@ export default {
 };
 </script>
 
-<style lang="stylus" scoped>
-
-</style>
+<style lang="stylus" scoped></style>

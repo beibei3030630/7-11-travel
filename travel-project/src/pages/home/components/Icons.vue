@@ -103,11 +103,12 @@ export default {
   top 0
 .mainContainer>>>.swiper-pagination-bullet-active
   background $themColor
-.mainContainer
-  width 100%
-  overflow hidden
-  height 0
-  padding-bottom 45%
+//添加占位符了，ipad留白太多
+// .mainContainer
+//   width 100%
+//   overflow hidden
+//   height 0
+//   padding-bottom 45%
   .iconsContainer
     width 100%
     height 300px

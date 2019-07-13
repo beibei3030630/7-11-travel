@@ -1,6 +1,7 @@
 <template>
   <div class="mainContainer">
     <div class="subtitle">热销推荐</div>
+    <home-scroll></home-scroll>
     <ul class="recommendList">
       <li class="recommendContainer border-bottom" v-for="item of recommendList" :key="item.id">
         <img
@@ -23,9 +24,12 @@
 </template>
 
 <script>
+import HomeScroll from "./Scroll";
 export default {
   name: "HomeRecommend",
-  components: {},
+  components: {
+    HomeScroll
+  },
   data() {
     return {
       recommendList:[
