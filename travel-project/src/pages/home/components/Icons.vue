@@ -1,5 +1,5 @@
 <template>
-  <div class="mainContaier">
+  <div class="mainContainer">
     <swiper class="swiper" :options="swiperOption">
       <swiper-slide v-for="(page,index) of pages" :key="index">
         <div class="iconsContainer">
@@ -98,31 +98,36 @@ export default {
 <style scoped lang='stylus'>
 @import '~styles/varibles.styl'
 @import '~styles/mixins.styl'
-.mainContaier>>>.swiper-pagination
+.mainContainer>>>.swiper-pagination
   position relative
   top 0
-.mainContaier>>>.swiper-pagination-bullet-active
+.mainContainer>>>.swiper-pagination-bullet-active
   background $themColor
-.iconsContainer
+.mainContainer
   width 100%
-  height 300px
-  display flex
-  flex-flow row wrap
-  .icon
-    width 25%
-    height 50%
+  overflow hidden
+  height 0
+  padding-bottom 45%
+  .iconsContainer
+    width 100%
+    height 300px
     display flex
-    flex-direction column
-    align-items center
-    justify-content center
-    img
-      height 80px
-      width 80px
-      margin-bottom 10px
-    span
-      color $darkColorText
-      font-size 10px
-      width 70%
-      text-align center
-      ellipsis()
+    flex-flow row wrap
+    .icon
+      width 25%
+      height 50%
+      display flex
+      flex-direction column
+      align-items center
+      justify-content center
+      img
+        height 80px
+        width 80px
+        margin-bottom 10px
+      span
+        color $darkColorText
+        font-size 10px
+        width 70%
+        text-align center
+        ellipsis()
 </style>
