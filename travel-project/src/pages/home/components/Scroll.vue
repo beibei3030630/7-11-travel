@@ -9,51 +9,12 @@
 <script>
 export default {
   components: {},
+  props:{
+    tagList:Array
+  },
   data() {
     return {
-      tagList: [
-        {
-          id: "001",
-          tagContent: "暑期热卖"
-        },
-
-        {
-          id: "002",
-          tagContent: "中秋"
-        },
-        {
-          id: "003",
-          tagContent: "国庆"
-        },
-        {
-          id: "004",
-          tagContent: "优选商户"
-        },
-        {
-          id: "005",
-          tagContent: "玉龙雪山"
-        },
-        {
-          id: "006",
-          tagContent: "经典2日游"
-        },
-        {
-          id: "007",
-          tagContent: "摄影"
-        },
-        {
-          id: "008",
-          tagContent: "无购物团"
-        },
-        {
-          id: "009",
-          tagContent: "无自费项目"
-        },
-        {
-          id: "010",
-          tagContent: "经典3日游"
-        },
-      ]
+      
     };
   },
   methods: {}

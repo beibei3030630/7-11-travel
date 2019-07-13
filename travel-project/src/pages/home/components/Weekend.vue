@@ -19,34 +19,12 @@
 export default {
   name: "HomeWeekend",
   components: {},
+  props:{
+    weekendList:Array
+  },
   data() {
     return {
-      weekendList: [
-        {
-          id: "001",
-          imgUrl:
-            "//source.qunarzz.com/site/images/wns/20190708_qunar_dujia_homepage_3.jpg",
-          title: "上海出发-跟团游",
-          description:
-            "暑期暴款·家庭专享丨五星服务0差评+豪华酒店丨洱海大游轮+雪山丨不夜宿火车"
-        },
-         {
-          id: "002",
-          imgUrl:
-            "//source.qunarzz.com/site/images/wns/20190626_dujia_homepage_top_banner_5.jpg",
-          title: "上海出发-跟团游",
-          description:
-            "暑期暴款·家庭专享丨五星服务0差评+豪华酒店丨洱海大游轮+雪山丨不夜宿火车"
-        },
-         {
-          id: "003",
-          imgUrl:
-            "////source.qunarzz.com/site/images/wns/20190705_qunar_dujia_homepage_top_banner_1.jpg",
-          title: "上海出发-跟团游",
-          description:
-            "暑期暴款·家庭专享丨五星服务0差评+豪华酒店丨洱海大游轮+雪山丨不夜宿火车"
-        }
-      ]
+      
     };
   },
   methods: {}
