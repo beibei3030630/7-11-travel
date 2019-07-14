@@ -7,22 +7,23 @@
       <i class="iconfont searchIcon"></i>
       输入城市景点/游玩主题
     </div>
-    <div class="headerRight">
-      {{city}}
-      <i class="iconfont arrowIcon"></i>
-    </div>
+    <router-link to="/city">
+      <div class="headerRight">
+        {{city}}
+        <i class="iconfont arrowIcon"></i>
+      </div>
+    </router-link>
   </div>
 </template>
 
 <script>
 export default {
   name: "HomeHeader",
-  props:{
-    city:String
+  props: {
+    city: String
   },
   data() {
-    return {
-    };
+    return {};
   },
   methods: {},
   components: {}
@@ -36,7 +37,7 @@ export default {
   display flex
   flex-direction row
   align-items center
-  height 86px
+  height $headerHeight
   color #fff
   .headerLeft
     width 64px
@@ -63,6 +64,7 @@ export default {
     width 124px
     float right
     text-align center
+    color #fff
     .arrowIcon:before
       content '\e64a'
       font-size 15px
