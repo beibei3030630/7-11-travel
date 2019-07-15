@@ -1,6 +1,6 @@
 <template>
   <div>
-    <home-header :city="dataList.city"></home-header>
+    <home-header :city="selectedCityName||dataList.city"></home-header>
     <home-swiper :swiperList="dataList.swiperList"></home-swiper>
     <home-icons :iconList="dataList.iconList"></home-icons>
     <home-recommend :recommendList="dataList.recommendList" :tagList="dataList.tagList"></home-recommend>
@@ -15,7 +15,7 @@ import HomeIcons from "./components/Icons";
 import HomeRecommend from "./components/Recommend";
 import HomeWeekend from "./components/Weekend";
 import HomeScroll from "./components/Scroll";
- import axios from 'axios';
+import axios from "axios";
 export default {
   name: "Home",
   components: {
@@ -28,31 +28,34 @@ export default {
   },
   data() {
     return {
-      dataList:{}
+      dataList: {},
+      selectedCityName: ""
     };
   },
-  mounted(){
+  mounted() {
     this.getHomeInfo();
+    this.changeSelectedCity();
   },
   methods: {
-    getHomeInfo(){
-      axios.get('/api/index.json')
-      .then(this.getHomeInfoSucc)
+    getHomeInfo() {
+      axios.get("/api/index.json").then(this.getHomeInfoSucc);
     },
-    getHomeInfoSucc(res){
-      var  res=res.data;
-      if(res.ret&&res.data){
-        const data=res.data;
-        this.dataList={
-          "city":data.city,
-          "iconList":data.iconList,
-          "recommendList":data.recommendList,
-          "swiperList":data.swiperList,
-          "tagList":data.tagList,
-          "weekendList":data.weekendList
-        }
-
+    getHomeInfoSucc(res) {
+      var res = res.data;
+      if (res.ret && res.data) {
+        const data = res.data;
+        this.dataList = {
+          city: data.city,
+          iconList: data.iconList,
+          recommendList: data.recommendList,
+          swiperList: data.swiperList,
+          tagList: data.tagList,
+          weekendList: data.weekendList
+        };
       }
+    },
+    changeSelectedCity() {
+      this.selectedCityName = this.$route.query.cityName;
     }
   }
 };

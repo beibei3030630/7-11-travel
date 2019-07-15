@@ -7,7 +7,7 @@
       <i class="iconfont searchIcon"></i>
       输入城市景点/游玩主题
     </div>
-    <router-link to="/city">
+    <router-link :to="{path:'/city',query:{cityName:city}}">
       <div class="headerRight">
         {{city}}
         <i class="iconfont arrowIcon"></i>
@@ -32,6 +32,7 @@ export default {
 
 <style lang="stylus" scoped>
 @import '~styles/varibles.styl'
+@import '~styles/mixins.styl'
 .headerContaier
   background-color $themColor
   display flex
@@ -61,10 +62,10 @@ export default {
       position relative
       top 7px
   .headerRight
-    width 124px
     float right
     text-align center
     color #fff
+    margin 0 10px
     .arrowIcon:before
       content '\e64a'
       font-size 15px
