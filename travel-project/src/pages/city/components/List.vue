@@ -4,16 +4,14 @@
       <div class="area">
         <div class="subtitle border-topbottom">您的位置</div>
         <div class="contentContainer">
-          <div class="tag tagSelected">{{this.$store.state.city}}</div>
+          <div class="tag tagSelected">{{this.currentCity}}</div>
         </div>
       </div>
       <div class="area">
         <div class="subtitle border-topbottom">热门城市</div>
         <div class="contentContainer">
           <div @click="changeCity(item.name)" class="tag" v-for="item of hotCity" :key="item.id">
-            <router-link to="/">
-              <span class="tagText">{{item.name}}</span>
-            </router-link>
+            <span class="tagText">{{item.name}}</span>
           </div>
         </div>
       </div>
@@ -26,9 +24,7 @@
             v-for="item of cityArr"
             :key="item.id"
           >
-            <router-link to="/">
-              <span class="itemText">{{item.name}}</span>
-            </router-link>
+            <span class="itemText">{{item.name}}</span>
           </li>
         </ul>
       </div>
@@ -38,6 +34,7 @@
 
 <script>
 import Bscroll from "better-scroll";
+import { mapState } from "vuex";
 export default {
   name: "CityList",
   props: {
@@ -48,13 +45,19 @@ export default {
   mounted() {
     this.scroll = new Bscroll(this.$refs.wrapper);
   },
+  computed: {
+    ...mapState({
+      currentCity: "city"
+    })
+  },
   components: {},
   data() {
     return {};
   },
   methods: {
     changeCity(cityName) {
-      this.$store.dispatch("changeCity", cityName);
+      this.$store.commit('changeCity',cityName)
+      this.$router.push("/");
     }
   },
   watch: {

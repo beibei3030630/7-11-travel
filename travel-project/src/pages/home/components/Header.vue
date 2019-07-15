@@ -63,6 +63,7 @@ export default {
     text-align center
     color #fff
     margin 0 10px
+    min-width 70px
     .arrowIcon:before
       content '\e64a'
       font-size 15px

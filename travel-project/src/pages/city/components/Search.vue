@@ -19,9 +19,7 @@
           v-for="item of list"
           @click="changeCity(item.name)"
         >
-          <router-link>
-            <span class="itemText">{{item.name}}</span>
-          </router-link>
+          <span class="itemText">{{item.name}}</span>
         </li>
         <li class="list-item border-bottom" v-show="hasNoData">暂无相关城市</li>
       </ul>
@@ -45,6 +43,7 @@ export default {
   props: {
     cityList: Object
   },
+
   data() {
     return {
       inputFlag: false,
@@ -64,7 +63,8 @@ export default {
       this.keyWord = "";
     },
     changeCity(cityName) {
-      this.$store.dispatch("changeCity", cityName);
+      this.$store.dispatch("changeCity",cityName);
+      this.$router.push("/");
     }
   },
   watch: {
