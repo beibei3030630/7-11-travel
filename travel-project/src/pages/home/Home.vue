@@ -1,6 +1,6 @@
 <template>
   <div>
-    <home-header ></home-header>
+    <home-header></home-header>
     <home-swiper :swiperList="dataList.swiperList"></home-swiper>
     <home-icons :iconList="dataList.iconList"></home-icons>
     <home-recommend :recommendList="dataList.recommendList" :tagList="dataList.tagList"></home-recommend>
@@ -16,6 +16,7 @@ import HomeRecommend from "./components/Recommend";
 import HomeWeekend from "./components/Weekend";
 import HomeScroll from "./components/Scroll";
 import axios from "axios";
+import { mapState } from "vuex";
 export default {
   name: "Home",
   components: {
@@ -28,15 +29,25 @@ export default {
   },
   data() {
     return {
-      dataList: {}
+      dataList: {},
+      lastSelectedCity:this.city
     };
   },
   mounted() {
     this.getHomeInfo();
   },
+  activated() {
+    if(this.lastSelectedCity!=this.city){
+      this.lastSelectedCity=this.city
+      this.getHomeInfo()
+    }
+  },
+  computed: {
+    ...mapState(["city"])
+  },
   methods: {
     getHomeInfo() {
-      axios.get("/api/index.json").then(this.getHomeInfoSucc);
+      axios.get("/api/index.json?city=" + this.city).then(this.getHomeInfoSucc);
     },
     getHomeInfoSucc(res) {
       var res = res.data;
