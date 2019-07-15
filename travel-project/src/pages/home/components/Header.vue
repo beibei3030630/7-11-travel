@@ -7,9 +7,9 @@
       <i class="iconfont searchIcon"></i>
       输入城市景点/游玩主题
     </div>
-    <router-link :to="{path:'/city',query:{cityName:city}}">
+    <router-link :to="{path:'/city'}">
       <div class="headerRight">
-        {{city}}
+        {{this.$store.state.city}}
         <i class="iconfont arrowIcon"></i>
       </div>
     </router-link>
@@ -19,9 +19,6 @@
 <script>
 export default {
   name: "HomeHeader",
-  props: {
-    city: String
-  },
   data() {
     return {};
   },

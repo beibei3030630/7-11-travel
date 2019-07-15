@@ -1,8 +1,8 @@
 <template>
   <div>
     <city-header></city-header>
-    <city-search :cityList="cityList"></city-search>
-    <city-list :currentCity="currentCity" :hotCity="hotCity" :cityList="cityList" :handleWord="handleWord"></city-list>
+    <city-search></city-search>
+    <city-list :hotCity="hotCity" :cityList="cityList" :handleWord="handleWord"></city-list>
     <city-alphabet :cityList="cityList" @changeWord="changeWord"></city-alphabet>
   </div>
 </template>
@@ -25,13 +25,11 @@ export default {
     return {
       hotCity: null,
       cityList: null,
-      currentCity: "",
-      handleWord:""
+      handleWord: ""
     };
   },
   mounted() {
     this.requestCityData();
-    this.currentCity = this.$route.query.cityName;
   },
   methods: {
     async requestCityData() {
@@ -49,13 +47,11 @@ export default {
         console.log(error);
       }
     },
-    changeWord(word){
-      this.handleWord=word
+    changeWord(word) {
+      this.handleWord = word;
     }
   }
 };
 </script>
 
-<style scoped lang='stylus'>
-
-</style>
+<style scoped lang='stylus'></style>

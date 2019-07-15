@@ -4,14 +4,14 @@
       <div class="area">
         <div class="subtitle border-topbottom">您的位置</div>
         <div class="contentContainer">
-          <div class="tag tagSelected">{{currentCity}}</div>
+          <div class="tag tagSelected">{{this.$store.state.city}}</div>
         </div>
       </div>
       <div class="area">
         <div class="subtitle border-topbottom">热门城市</div>
         <div class="contentContainer">
-          <div class="tag" v-for="item of hotCity" :key="item.id">
-            <router-link :to="{path:'/',query:{cityName:item.name}}">
+          <div @click="changeCity(item.name)" class="tag" v-for="item of hotCity" :key="item.id">
+            <router-link to="/">
               <span class="tagText">{{item.name}}</span>
             </router-link>
           </div>
@@ -20,9 +20,14 @@
       <div class="area" v-for="(cityArr,firstWord,index) of cityList" :key="index" :ref="firstWord">
         <div class="subtitle border-topbottom">{{firstWord}}</div>
         <ul>
-          <li class="listItem" v-for="item of cityArr" :key="item.id">
-            <router-link :to="{path:'/',query:{cityName:item.name}}">
-              <span class="listItemText">{{item.name}}</span>
+          <li
+            @click="changeCity(item.name)"
+            class="listItem"
+            v-for="item of cityArr"
+            :key="item.id"
+          >
+            <router-link to="/">
+              <span class="itemText">{{item.name}}</span>
             </router-link>
           </li>
         </ul>
@@ -38,7 +43,6 @@ export default {
   props: {
     hotCity: Array,
     cityList: Object,
-    currentCity: String,
     handleWord: String
   },
   mounted() {
@@ -48,12 +52,16 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    changeCity(cityName) {
+      this.$store.dispatch("changeCity", cityName);
+    }
+  },
   watch: {
     handleWord() {
-     if(this.handleWord){
-       this.scroll.scrollToElement(this.$refs[this.handleWord][0])
-     }
+      if (this.handleWord) {
+        this.scroll.scrollToElement(this.$refs[this.handleWord][0]);
+      }
     }
   }
 };
@@ -105,11 +113,11 @@ export default {
     .listItem
       padding 15px 20px
       border-top 1px solid #d7d7d7
-      .listItemText
+      .itemText
         color $darkColorText
-        display block
-        height 100%
         width 100%
+        height 100%
+        display block
     .listItem:first-child
       border-top none
 </style>

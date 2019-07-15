@@ -1,6 +1,6 @@
 <template>
   <div>
-    <home-header :city="selectedCityName||dataList.city"></home-header>
+    <home-header ></home-header>
     <home-swiper :swiperList="dataList.swiperList"></home-swiper>
     <home-icons :iconList="dataList.iconList"></home-icons>
     <home-recommend :recommendList="dataList.recommendList" :tagList="dataList.tagList"></home-recommend>
@@ -28,13 +28,11 @@ export default {
   },
   data() {
     return {
-      dataList: {},
-      selectedCityName: ""
+      dataList: {}
     };
   },
   mounted() {
     this.getHomeInfo();
-    this.changeSelectedCity();
   },
   methods: {
     getHomeInfo() {
@@ -45,7 +43,6 @@ export default {
       if (res.ret && res.data) {
         const data = res.data;
         this.dataList = {
-          city: data.city,
           iconList: data.iconList,
           recommendList: data.recommendList,
           swiperList: data.swiperList,
@@ -53,9 +50,6 @@ export default {
           weekendList: data.weekendList
         };
       }
-    },
-    changeSelectedCity() {
-      this.selectedCityName = this.$route.query.cityName;
     }
   }
 };

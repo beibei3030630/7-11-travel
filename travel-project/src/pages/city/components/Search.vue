@@ -13,7 +13,16 @@
     </div>
     <div class="searchPannel" ref="searchPannel" v-show="keyWord">
       <ul>
-        <li class="list-item border-bottom" :key="item.id" v-for="item of list">{{item.name}}</li>
+        <li
+          class="list-item border-bottom"
+          :key="item.id"
+          v-for="item of list"
+          @click="changeCity(item.name)"
+        >
+          <router-link>
+            <span class="itemText">{{item.name}}</span>
+          </router-link>
+        </li>
         <li class="list-item border-bottom" v-show="hasNoData">暂无相关城市</li>
       </ul>
     </div>
@@ -44,15 +53,18 @@ export default {
       timer: null
     };
   },
-  computed:{
-    hasNoData(){
-      return !this.list.length
+  computed: {
+    hasNoData() {
+      return !this.list.length;
     }
   },
   methods: {
     showSearchInput() {
       this.inputFlag = !this.inputFlag;
-      this.keyWord=""
+      this.keyWord = "";
+    },
+    changeCity(cityName) {
+      this.$store.dispatch("changeCity", cityName);
     }
   },
   watch: {
@@ -115,4 +127,9 @@ export default {
     line-height 50px
     font-size 26px
     padding-left 40px
+    .itemText
+      color $darkColorText
+      display inline-block
+      height 100%
+      width 100%
 </style>
