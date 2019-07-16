@@ -3,6 +3,9 @@
     <detail-banner :bannerInfo="bannerInfo"></detail-banner>
     <detail-gallery :gallaryImgs="gallaryImgs"></detail-gallery>
     <detail-header></detail-header>
+    <div class="content">
+      <detail-list :categoryList="categoryList" :isChild="isChild"></detail-list>
+    </div>
   </div>
 </template>
 
@@ -10,19 +13,22 @@
 import DetailBanner from "./components/Banner";
 import DetailGallery from "../../common/gallery/Gallery";
 import DetailHeader from "./components/Header";
+import DetailList from "./components/List";
 import axios from "axios";
 export default {
   name: "Detail",
   components: {
     DetailBanner,
     DetailGallery,
-    DetailHeader
+    DetailHeader,
+    DetailList
   },
   data() {
     return {
       categoryList: null,
       gallaryImgs: null,
-      bannerInfo: {}
+      bannerInfo: {},
+      isChild:false
     };
   },
   methods: {
@@ -34,7 +40,7 @@ export default {
         this.bannerInfo = {
           bannerImg: detailRes.data.bannerImg,
           sightName: detailRes.data.sightName,
-          bannerImgNum:detailRes.data.gallaryImgs.length
+          bannerImgNum: detailRes.data.gallaryImgs.length
         };
       }
     }
@@ -46,4 +52,8 @@ export default {
 };
 </script>
 
-<style scoped lang='stylus'></style>
+<style scoped lang='stylus'>
+.content
+  background #eee
+  min-height 1000px
+</style>

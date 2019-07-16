@@ -7,7 +7,6 @@
       <router-link class="iconfont backIcon" to="/" tag="i"></router-link>
       <div class="subTitle">大连圣亚海洋世界</div>
     </div>
-    <div class="content"></div>
   </div>
 </template>
 
@@ -83,6 +82,4 @@ export default {
     color #ffffff
     font-size 28px
     letter-spacing 2px
-.content
-  height 50rem
 </style>
