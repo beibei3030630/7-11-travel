@@ -5,7 +5,7 @@
       class="word"
       :key="item"
       @click="handleWord"
-      @touchstart="handleTouchStart"
+      @touchstart.prevent="handleTouchStart"
       @touchmove="handleTouchMove"
       @touchend="handleTouchEnd"
       :ref="item"
