@@ -8,5 +8,6 @@ try {
     console.log(err);
   }
 export default{
-    city: defaultCity
+    city: defaultCity,
+    galleryShow:false
 }

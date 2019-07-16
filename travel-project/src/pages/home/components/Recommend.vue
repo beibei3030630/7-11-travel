@@ -3,11 +3,14 @@
     <div class="subtitle">热销推荐</div>
     <home-scroll :tagList="tagList"></home-scroll>
     <ul class="recommendList">
-      <li class="recommendContainer border-bottom" v-for="item of recommendList" :key="item.id">
-        <img
-          :src="item.imgUrl"
-          class="coverImg"
-        />
+      <router-link
+        class="recommendContainer border-bottom"
+        v-for="item of recommendList"
+        :key="item.id"
+        tag="li"
+        :to="'/detail?id='+item.id"
+      >
+        <img :src="item.imgUrl" class="coverImg" />
         <div class="contentContainer">
           <p class="title">{{item.title}}</p>
           <p class="description">{{item.description}}</p>
@@ -18,7 +21,7 @@
             </span>起
           </p>
         </div>
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>
@@ -27,21 +30,17 @@
 import HomeScroll from "./Scroll";
 export default {
   name: "HomeRecommend",
-  props:{
-    recommendList:Array,
-    tagList:Array
+  props: {
+    recommendList: Array,
+    tagList: Array
   },
   components: {
     HomeScroll
   },
   data() {
-    return {
-     
-    };
+    return {};
   },
-  methods: {
-  
-  }
+  methods: {}
 };
 </script>
 

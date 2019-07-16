@@ -6,5 +6,8 @@ export default {
     } catch (err) {
       console.log(err);
     }
+  },
+  changeGallery(state){
+    state.galleryShow=!state.galleryShow
   }
 };
