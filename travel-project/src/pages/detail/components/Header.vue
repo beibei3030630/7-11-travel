@@ -4,7 +4,7 @@
       <i class="iconfont backIcon"></i>
     </router-link>
     <div class="headerContainer" v-show="showHeader" :style="opacityStyle">
-      <i class="iconfont backIcon"></i>
+      <router-link class="iconfont backIcon" to="/" tag="i"></router-link>
       <div class="subTitle">大连圣亚海洋世界</div>
     </div>
     <div class="content"></div>
@@ -29,7 +29,7 @@ export default {
       if (currentY > 50) {
         this.showHeader = true;
         let opacityDegree = currentY / 200;
-        opacityDegree=opacityDegree>1?1:opacityDegree
+        opacityDegree = opacityDegree > 1 ? 1 : opacityDegree;
         this.opacityStyle = { opacity: opacityDegree };
       } else {
         this.showHeader = false;
@@ -38,6 +38,9 @@ export default {
   },
   activated() {
     window.addEventListener("scroll", this.handleScroll);
+  },
+  deactivated() {
+    window.removeEventListener("scroll", this.handleScroll);
   }
 };
 </script>
