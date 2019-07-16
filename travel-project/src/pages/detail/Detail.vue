@@ -28,7 +28,8 @@ export default {
       categoryList: null,
       gallaryImgs: null,
       bannerInfo: {},
-      isChild:false
+      isChild: false,
+      lastId: 0
     };
   },
   methods: {
@@ -45,9 +46,18 @@ export default {
       }
     }
   },
-  async mounted() {
-    const detailData = await axios.get("/api/detail.json");
-    this.getDetailData(detailData);
+  mounted() {},
+  async activated() {
+    const currentId = this.$route.params.id;
+    if (this.lastId != currentId) {
+      this.lastId = currentId;
+      const detailData = await axios.get("/api/detail.json", {
+        params: {
+          id: this.$route.params.id
+        }
+      });
+      this.getDetailData(detailData);
+    }
   }
 };
 </script>
@@ -55,5 +65,5 @@ export default {
 <style scoped lang='stylus'>
 .content
   background #eee
-  min-height 1000px
+  min-height 1600px
 </style>

@@ -1,10 +1,16 @@
 <template>
   <div>
-    <home-header></home-header>
-    <home-swiper :swiperList="dataList.swiperList"></home-swiper>
-    <home-icons :iconList="dataList.iconList"></home-icons>
-    <home-recommend :recommendList="dataList.recommendList" :tagList="dataList.tagList"></home-recommend>
-    <home-weekend :weekendList="dataList.weekendList"></home-weekend>
+    <div class="header">
+      <home-header></home-header>
+    </div>
+    <div class="content" ref="mainContainer">
+      <div>
+        <home-swiper :swiperList="dataList.swiperList"></home-swiper>
+        <home-icons :iconList="dataList.iconList"></home-icons>
+        <home-recommend :recommendList="dataList.recommendList" :tagList="dataList.tagList"></home-recommend>
+        <home-weekend :weekendList="dataList.weekendList"></home-weekend>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -17,6 +23,7 @@ import HomeWeekend from "./components/Weekend";
 import HomeScroll from "./components/Scroll";
 import axios from "axios";
 import { mapState } from "vuex";
+import Bscroll from "better-scroll";
 export default {
   name: "Home",
   components: {
@@ -30,16 +37,17 @@ export default {
   data() {
     return {
       dataList: {},
-      lastSelectedCity:this.city
+      lastSelectedCity: this.city
     };
   },
   mounted() {
     this.getHomeInfo();
+    this.scroll = new Bscroll(this.$refs.mainContainer);
   },
   activated() {
-    if(this.lastSelectedCity!=this.city){
-      this.lastSelectedCity=this.city
-      this.getHomeInfo()
+    if (this.lastSelectedCity != this.city) {
+      this.lastSelectedCity = this.city;
+      this.getHomeInfo();
     }
   },
   computed: {
@@ -66,4 +74,18 @@ export default {
 };
 </script>
 
-<style lang="stylus" scoped></style>
+<style lang="stylus" scoped>
+.header
+  position fixed
+  top 0
+  left 0
+  right 0
+  z-index 99
+.content
+  position absolute
+  top 86px
+  left 0
+  right 0
+  bottom 0
+  overflow hidden
+</style>

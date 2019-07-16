@@ -8,7 +8,7 @@
         v-for="item of recommendList"
         :key="item.id"
         tag="li"
-        :to="'/detail?id='+item.id"
+        :to="'/detail/'+item.id"
       >
         <img :src="item.imgUrl" class="coverImg" />
         <div class="contentContainer">
@@ -40,7 +40,9 @@ export default {
   data() {
     return {};
   },
-  methods: {}
+  methods: {},
+  mounted() {
+  }
 };
 </script>
 

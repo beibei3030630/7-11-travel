@@ -43,7 +43,8 @@ export default {
     handleWord: String
   },
   mounted() {
-    this.scroll = new Bscroll(this.$refs.wrapper);
+   this.scroll = new Bscroll(this.$refs.wrapper);
+   console.log(this.scroll)
   },
   computed: {
     ...mapState({
@@ -56,7 +57,7 @@ export default {
   },
   methods: {
     changeCity(cityName) {
-      this.$store.commit('changeCity',cityName)
+      this.$store.commit("changeCity", cityName);
       this.$router.push("/");
     }
   },
@@ -69,7 +70,6 @@ export default {
   }
 };
 </script>
-
 <style scoped lang='stylus'>
 @import '~styles/varibles.styl'
 .border-topbottom:before
