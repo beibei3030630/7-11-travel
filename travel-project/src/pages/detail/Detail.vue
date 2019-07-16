@@ -2,18 +2,21 @@
   <div>
     <detail-banner :bannerInfo="bannerInfo"></detail-banner>
     <detail-gallery :gallaryImgs="gallaryImgs"></detail-gallery>
+    <detail-header></detail-header>
   </div>
 </template>
 
 <script>
 import DetailBanner from "./components/Banner";
 import DetailGallery from "../../common/gallery/Gallery";
+import DetailHeader from "./components/Header";
 import axios from "axios";
 export default {
   name: "Detail",
   components: {
     DetailBanner,
-    DetailGallery
+    DetailGallery,
+    DetailHeader
   },
   data() {
     return {
